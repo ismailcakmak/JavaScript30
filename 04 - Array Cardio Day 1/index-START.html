@@ -46,17 +46,12 @@
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-    function firstName(obj){
-      return obj.first;
-    }
 
-    function lastName(obj){
-      return obj.last;
+    function takeFirstandLast(obj){
+      return (`${obj.first}, ${obj.last}`)
     }
-
-    const firstNames = inventors.map(firstName);
-    const lastNames = inventors.map(lastName);
-    console.log(`first names : ${firstNames} \n last names : ${lastNames}`)
+    const invFirstandLast = inventors.map(takeFirstandLast);
+    console.log(invFirstandLast);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
@@ -72,6 +67,17 @@
     console.log(`Year Lived in Total : ${allYearsLived}`);
 
     // 5. Sort the inventors by years lived
+    function sortingFunc(a,b){
+      aLife = a.passed-a.year;
+      bLife = b.passed-b.year;
+
+      return aLife-bLife;
+    }
+
+    const sortedInv = inventors.sort(sortingFunc);
+    console.log("Sorted Inventors : ");
+    console.log(sortedInv);
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -86,6 +92,10 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+    const sortedArr = people.sort();
+    console.log("sorted names : ");
+    console.log(sortedArr);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
