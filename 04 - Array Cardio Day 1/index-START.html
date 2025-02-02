@@ -38,20 +38,50 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    function filter15s(obj){
+      return (obj.year>=1500 && obj.year<1600)
+    }
+    const invBornin15s = inventors.filter(filter15s);
+    console.log(invBornin15s); 
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    function firstName(obj){
+      return obj.first;
+    }
+
+    function lastName(obj){
+      return obj.last;
+    }
+
+    const firstNames = inventors.map(firstName);
+    const lastNames = inventors.map(lastName);
+    console.log(`first names : ${firstNames} \n last names : ${lastNames}`)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    function yearAccumulator(accumulator, obj){
+      const yearLived = obj.passed-obj.year;
+      return accumulator + yearLived;
+    }
+
+    const allYearsLived = inventors.reduce(yearAccumulator, 0);
+    console.log(`Year Lived in Total : ${allYearsLived}`);
 
     // 5. Sort the inventors by years lived
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+
+      function includesDE(name) {
+        return (name.includes("de") || name.includes("De"))
+      }
+
+      const list = people.filter(includesDE);
+      console.log(list);
 
 
     // 7. sort Exercise
@@ -60,6 +90,21 @@
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    const obj = {};
+
+    function createObj(str){
+      if (!(str in obj))
+        obj[str] = 1;
+      else
+        obj[str] = obj[str]+1;
+    }
+
+    data.forEach(createObj);
+    Object.keys(obj).forEach((key)=>{
+      console.log(`${key} : ${obj[key]}`)
+    });
+
 
   </script>
 </body>
